@@ -1,7 +1,6 @@
-from recommender import recommend_movies, recommend_for_user
+from recommender import recommend_movies
 
-print("Similar movies to 'The Dark Knight':")
-print(recommend_movies("The Dark Knight"))
+recommendations = recommend_movies("Brave")
 
-print("\n Recommendations for user who likes Inception and Interstellar:")
-# print(recommend_for_user(["Inception", "Interstellar"]))
+for movie in recommendations:
+    print(f"- {movie}")

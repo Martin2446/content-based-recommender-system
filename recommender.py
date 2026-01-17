@@ -15,11 +15,4 @@ def recommend_movies(title, top_n = 10):
     scores = sorted(scores, key = lambda x: x[1], reverse = True)
     scores = scores[1:top_n+1]
     indices = [i[0] for i in scores]
-    return movies['title'].iloc[indices]
-
-def recommend_for_user(liked_movies, top_n = 10):
-    indices = movies[movies['title'].isin(liked_movies)].index
-    user_vector = tfidf_matrix[indices].mean(axis = 0)
-    similarity = cosine_similarity(user_vector, tfidf_matrix)[0]
-    movie_indices = similarity.argsort()[::-1][:top_n]
-    return movies['title'].iloc[movie_indices]
+    return movies['title'].iloc[indices].values.tolist()
